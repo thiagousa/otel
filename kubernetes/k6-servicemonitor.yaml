@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: k6-servicemonitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: k6-prometheus
+  endpoints:
+    - port: prometheus
+  namespaceSelector:
+    matchNames:
+      - default
